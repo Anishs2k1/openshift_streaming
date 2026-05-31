@@ -69,4 +69,18 @@ SEVERITY_MAP = {
 
 def generate_random_event() -> ClusterEvents:
     event_type = random.choice(list(EventType))
-    
+    severity = random.choice(SEVERITY_MAP[event_type])
+    messages = random.choice(MESSAGES[event_type])
+    namespace = random.choice(NAMESPACES)
+    resource = random.choice(RESOURCE_NAMES)
+
+
+    return ClusterEvents(
+        id = str(uuid.uuid4()),
+        event_type = event_type,
+        messages = messages,
+        severity = severity,
+        namespace = namespace,
+        resource = resource,
+        timestamp = datetime.now(timezone.utc)
+    )

@@ -60,17 +60,25 @@ class ClusterEvent(BaseModel):
 
 class EventSummary(BaseModel):
     total_received: int = Field(
-
+        description = "Total events received",
+        example = "20"
     )
 
     counts_by_severity: dict[str : int] = Field(
-
+        description = "Count of each recorded severity",
+        example = "WARNING: 20"
     )
 
     counts_by_type: dict[str : int] = Field(
-        
+        description = "Count of even event type",
+        example = "POD Crash : 20"
     )
-
+    
+    last_updated: Optional[datetime] = Field(
+        default=None,
+        description="Timestamp of the most recently received event",
+        example="2026-05-28T10:05:32+00:00"
+    )
 
 
 
