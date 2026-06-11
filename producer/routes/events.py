@@ -7,7 +7,7 @@ from state import event_history
 
 router = APIRouter()
 
-@router.get('/events', response_model=list[ClusterEvent])
+@router.get('/events', response_model=list[ClusterEvent]) #A list of ClusterEvent objects from the Clusterevent class will be the output structure
 async def get_events(
     severity: Optional[Severity] = Query(
         default = None,
